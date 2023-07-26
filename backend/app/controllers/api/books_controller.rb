@@ -1,10 +1,11 @@
-class Api::AlbumsController < ApplicationController
+class Api::BooksController < ApplicationController
 
     # for AWS s3 bucket integration to attach photos to books
     # wrap_parameters include :Book.attribute_name + [:photo], format: :multipart_form
 
     def index
-        @books = Books.all
+        #eager loading: prevents the n+1 query problem
+        @books = Book.includes(:school).all
     end
 
     def show
