@@ -5,6 +5,7 @@ import { useBooksFiltered } from "./hooks/useBooksFiltered";
 import Navigation from "./components/Navigation";
 import Dropdown from "./components/Dropdown";
 import { NO_SCHOOL } from "./utils/constants";
+import Books from "./components/Books";
 
 function App() {
   const { data: paginatedBooks, ...paginatedBooksUtils } = usePaginatedBooks();
@@ -71,6 +72,19 @@ function App() {
             await loadBooksBySchool(newValue.id);
           }}
         />
+
+        <Books books={books} />
+
+        {paginatedBooks?.nextPage && (
+          <button
+            disabled={paginatedBooksUtils.loading}
+            onClick={async () => {
+              await loadAllBooks();
+            }}
+          >
+            View More
+          </button>
+        )}
       </div>
     </>
   );
