@@ -1,8 +1,6 @@
-import "./index.css";
 import { useCallback, useState } from "react";
 import TextField from "@mui/material/TextField";
 import { CustomAutocomplete } from "./autoCompleteStyling";
-
 
 function Dropdown({
   defaultValue,
@@ -27,7 +25,7 @@ function Dropdown({
   );
 
   return (
-    <div className="dropdown-container">
+    // <div className="dropdown-container">
       <CustomAutocomplete
         value={selectedValue}
         onChange={onChange}
@@ -46,7 +44,7 @@ function Dropdown({
           />
         )}
       />
-    </div>
+    // </div>
   );
 }
 

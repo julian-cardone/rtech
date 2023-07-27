@@ -6,6 +6,7 @@ import Navigation from "./components/Navigation";
 import Dropdown from "./components/Dropdown";
 import { NO_SCHOOL } from "./utils/constants";
 import Books from "./components/Books";
+import { Container } from "@mui/material";
 
 function App() {
   const { data: paginatedBooks, ...paginatedBooksUtils } = usePaginatedBooks();
@@ -47,9 +48,18 @@ function App() {
 
   return (
     <>
-      <div >
-        <Navigation />
+      {/* <div className="app-container"> */}
+      <Navigation />
 
+      <Container
+        style={{
+          justifyContent: "center",
+          padding: "90px 16px",
+          maxWidth: "1410px",
+          margin: "auto",
+          backgroundImage: "linear-gradient(90deg, #D9DAEB, #EBE5E3)"
+        }}
+      >
         <Dropdown
           isLoading={isLoading}
           defaultValue={NO_SCHOOL}
@@ -72,20 +82,22 @@ function App() {
             await loadBooksBySchool(newValue.id);
           }}
         />
+        <div style={{ marginTop: "36px", width: "100%" }}>
+          <Books books={books} />
 
-        <Books books={books} />
-
-        {paginatedBooks?.nextPage && (
-          <button
-            disabled={paginatedBooksUtils.loading}
-            onClick={async () => {
-              await loadAllBooks();
-            }}
-          >
-            View More
-          </button>
-        )}
-      </div>
+          {paginatedBooks?.nextPage && (
+            <button
+              disabled={paginatedBooksUtils.loading}
+              onClick={async () => {
+                await loadAllBooks();
+              }}
+            >
+              View More
+            </button>
+          )}
+        </div>
+      </Container>
+      {/* </div> */}
     </>
   );
 }
