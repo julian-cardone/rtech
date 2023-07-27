@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { useContext } from "react";
+import { AppContext } from "./utils/context";
+import { useCustomFetch } from "./hooks/useCustomFetch";
 
 function App() {
+
+  const { cache } = useContext(AppContext)
+  console.log(cache)
+  const { fetchWithCache } = useCustomFetch()
+
+const handleBooks = () =>{
+  fetchWithCache("/api/books")
+  console.log(cache)
+}
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+<>
+<button onClick={handleBooks}>books</button>
+<button onClick={()=>fetchWithCache(`api/books/${5}`)}>books w id</button>
+<button onClick={()=>fetchWithCache("api/schools")}>schools</button>
+</>
   );
 }
 
