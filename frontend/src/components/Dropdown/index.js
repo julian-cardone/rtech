@@ -25,7 +25,6 @@ function Dropdown({
   );
 
   return (
-    // <div className="dropdown-container">
       <CustomAutocomplete
         value={selectedValue}
         onChange={onChange}
@@ -44,7 +43,6 @@ function Dropdown({
           />
         )}
       />
-    // </div>
   );
 }
 

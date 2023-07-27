@@ -13,7 +13,7 @@ class Api::BooksController < ApplicationController
         #eager loading: prevents the n+1 query problem
         @books = Book.includes(:school).offset(offset).limit(BOOKS_PER_PAGE)
         
-        @next_page = @books.size == BOOKS_PER_PAGE ? page + 1 : :null
+        @next_page = @books.size == BOOKS_PER_PAGE ? page + 1 : nil
     end
 
     def show

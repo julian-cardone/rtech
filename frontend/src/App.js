@@ -48,7 +48,6 @@ function App() {
 
   return (
     <>
-      {/* <div className="app-container"> */}
       <Navigation />
 
       <Container
@@ -97,7 +96,6 @@ function App() {
           )}
         </div>
       </Container>
-      {/* </div> */}
     </>
   );
 }

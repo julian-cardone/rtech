@@ -5,7 +5,6 @@ function Books({ books }) {
   if (books === null) {
     return <div> this is a loading div... </div>;
   }
-  console.log(books)
 
   const typographyTwo = {
       fontFamily: "Rubik, sans-serif",
@@ -18,7 +17,6 @@ function Books({ books }) {
 
   return (
     <>
-      {/* <div className="books-container"> */}
       <Grid container spacing={4}>
         {books.map((book) => (
           <Grid
@@ -80,7 +78,6 @@ function Books({ books }) {
           </Grid>
         ))}
       </Grid>
-      {/* </div> */}
     </>
   );
 }
