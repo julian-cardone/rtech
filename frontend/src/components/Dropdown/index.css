@@ -1,0 +1,9 @@
+.dropdown-container{
+    height: 106px;
+    width: 100%;
+    top: 58px;
+    z-index: 10;
+    position: fixed;
+    padding-top: 32px;
+    background-image: linear-gradient(90deg, #D9DAEB, #EBE5E3);
+}

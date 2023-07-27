@@ -3,6 +3,8 @@ import { useSchools } from "./hooks/useSchools";
 import { usePaginatedBooks } from "./hooks/usePaginatedBooks";
 import { useBooksFiltered } from "./hooks/useBooksFiltered";
 import Navigation from "./components/Navigation";
+import Dropdown from "./components/Dropdown";
+import { NO_SCHOOL } from "./utils/constants";
 
 function App() {
   const { data: paginatedBooks, ...paginatedBooksUtils } = usePaginatedBooks();
@@ -42,10 +44,38 @@ function App() {
     }
   }, [schoolsUtils.loading, schools, loadAllBooks]);
 
+  const test = schools === null ? [] : [NO_SCHOOL, ...schools];
+  console.log(test);
+
   return (
-  <>
-  <Navigation />
-  </>
+    <>
+      <div>
+        <Navigation />
+
+        <Dropdown
+          isLoading={isLoading}
+          defaultValue={NO_SCHOOL?.name}
+          items={schools === null ? [] : [NO_SCHOOL, ...schools]}
+          label="Filter by School"
+          loadingLabel="Loading Schools..."
+          parseItem={(item) => ({
+            value: item.id,
+            label: `${item.name}`,
+          })}
+          onChange={async (newValue) => {
+            if (newValue === null) {
+              return;
+            }
+
+            if (newValue === NO_SCHOOL) {
+              await loadAllBooks();
+            }
+
+            await loadBooksBySchool(newValue.id);
+          }}
+        />
+      </div>
+    </>
   );
 }
 

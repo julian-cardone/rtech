@@ -19,7 +19,7 @@ export function usePaginatedBooks() {
         return response;
       }
 
-      return { data: previousResponse.data.concat(response.data), nextPage: response.nextPage };
+      return { data: previousResponse?.data.concat(response.data), nextPage: response.nextPage };
     });
   }, [fetchWithCache, paginatedBooks]);
 
