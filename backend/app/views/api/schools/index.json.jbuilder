@@ -1,5 +1,5 @@
-@schools.each do |school|
-    json.set! school.id do
+json.data do 
+    json.array! @schools do |school|
         json.partial! 'api/schools/school', school: school
     end
 end
