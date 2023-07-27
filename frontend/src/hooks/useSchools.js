@@ -7,7 +7,7 @@ export function useSchools() {
 
   const fetchAll = useCallback(async () => {
     const schoolsData = await fetchWithCache("api/schools");
-    setSchools(schoolsData?.data);
+    setSchools(schoolsData);
   }, [fetchWithCache]);
 
   const invalidateData = useCallback(() => {

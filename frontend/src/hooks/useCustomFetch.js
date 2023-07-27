@@ -8,7 +8,7 @@ export const useCustomFetch = () => {
   const { loading, wrappedRequest } = useWrappedRequest();
 
   const fetchWithCache = useCallback(
-    async (endpoint, params=null) =>
+    async (endpoint, params = null) =>
       wrappedRequest(async () => {
         const cacheKey = getCacheKey(endpoint, params);
         const cacheResponse = cache?.current.get(cacheKey);
@@ -19,8 +19,7 @@ export const useCustomFetch = () => {
 
         const res = await rTechFetch(endpoint);
         const data = await res.json();
-        console.log(data)
-        cache?.current.set(cacheKey, data.data);
+        cache?.current.set(cacheKey, data);
         return data;
       }),
     [cache, wrappedRequest]
@@ -58,6 +57,6 @@ export const useCustomFetch = () => {
   return { fetchWithCache, clearCache, clearCacheByEndpoint, loading };
 };
 
-function getCacheKey(endpoint, params=null) {
-  return `${endpoint}${params ? `@${JSON.stringify(params)}` : ""}`
+function getCacheKey(endpoint, params = null) {
+  return `${endpoint}${params ? `@${JSON.stringify(params)}` : ""}`;
 }
