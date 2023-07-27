@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { useSchools } from "./hooks/useSchools";
 import { usePaginatedBooks } from "./hooks/usePaginatedBooks";
 import { useBooksFiltered } from "./hooks/useBooksFiltered";
+import Navigation from "./components/Navigation";
 
 function App() {
   const { data: paginatedBooks, ...paginatedBooksUtils } = usePaginatedBooks();
@@ -43,7 +44,7 @@ function App() {
 
   return (
   <>
-  {/* build the app!! */}
+  <Navigation />
   </>
   );
 }
