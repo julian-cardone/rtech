@@ -2,49 +2,64 @@ import styled from "@emotion/styled";
 import { AppBar, Toolbar, Grid, Button } from "@mui/material";
 
 function Navigation() {
+  const CustomAppBar = styled(AppBar)({
+    position: "fixed",
+    color: "default",
+    height: "58px",
+    zIndex: 40,
+    boxShadow: "none",
+    backgroundColor: "#f5f5f5",
+  });
 
   // Create a custom styled Toolbar component
   const CustomToolbar = styled(Toolbar)({
-    minHeight: 58,
+    color: '#696969',
+    minHeight: "58px !important",
+    height: "58px !important",
+    padding: '0px 16px !important' 
   });
+
+  const CustomButton = styled(Button)({
+    fontSize: '15px', 
+    fontFamily: "'Roboto', sans-serif", 
+    letterSpacing: "1px",
+    textTransform: "uppercase",
+    textDecoration: "none !important",
+    // textShadow: "0px 0.1px 0px rgba(105, 105, 105, 0.7)",
+    // fontStretch: "semi-condensed"
+  })
 
   return (
     <>
-      <AppBar
-        position="fixed"
-        color="default"
-        style={{ height: "58px", zIndex: 40 }}
-      >
-        <CustomToolbar
-          style={{ justifyContent: "center", backgroundColor: "#f5f5f5" }}
-        >
+      <CustomAppBar>
+        <CustomToolbar>
           <Grid container justifyContent="space-between" alignItems="center">
             <Grid item>
-              <Grid container spacing={2}>
+              <Grid container justifyContent="space-between">
                 <Grid item>
-                  <Button color="inherit">Login</Button>
+                  <CustomButton color="inherit">Login</CustomButton>
                 </Grid>
                 <Grid item>
-                  <Button color="inherit">Signup</Button>
+                  <CustomButton color="inherit">Signup</CustomButton>
                 </Grid>
               </Grid>
             </Grid>
             <Grid item>
-              <Grid container spacing={2}>
+              <Grid container>
                 <Grid item>
-                  <Button color="inherit">Library</Button>
+                  <CustomButton color="inherit">Library</CustomButton>
                 </Grid>
                 <Grid item>
-                  <Button color="inherit">Shop</Button>
+                  <CustomButton color="inherit">Shop</CustomButton>
                 </Grid>
                 <Grid item>
-                  <Button color="inherit">Cart</Button>
+                  <CustomButton color="inherit">Cart</CustomButton>
                 </Grid>
               </Grid>
             </Grid>
           </Grid>
         </CustomToolbar>
-      </AppBar>
+      </CustomAppBar>
     </>
   );
 }
