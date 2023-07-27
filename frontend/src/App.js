@@ -1,32 +1,50 @@
-import { useContext, useEffect } from "react";
-import { AppContext } from "./utils/context";
-import { useCustomFetch } from "./hooks/useCustomFetch";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useSchools } from "./hooks/useSchools";
 import { usePaginatedBooks } from "./hooks/usePaginatedBooks";
 import { useBooksFiltered } from "./hooks/useBooksFiltered";
 
 function App() {
-
-  const { cache } = useContext(AppContext)
-  const { fetchWithCache } = useCustomFetch()
-  // const { schools, fetchAll } = useSchools()
-  // const { data: paginatedBooks, ...paginatedBooksUtils } = usePaginatedBooks()
-  // const { data: schools, ...schoolsUtils } = useSchools()
+  const { data: paginatedBooks, ...paginatedBooksUtils } = usePaginatedBooks();
+  const { data: schools, ...schoolsUtils } = useSchools();
   const { data: booksBySchool, ...booksBySchoolUtils } = useBooksFiltered();
+  const [isLoading, setIsLoading] = useState(false);
 
-const handleBooks = async () =>{
-  await booksBySchoolUtils.fetchById(5)
-}
-console.log(cache)
-console.log(booksBySchool)
+  const books = useMemo(
+    () => paginatedBooks?.data ?? booksBySchool ?? null,
+    [paginatedBooks, booksBySchool]
+  );
+
+  const loadAllBooks = useCallback(async () => {
+    setIsLoading(true);
+
+    booksBySchoolUtils.invalidateData();
+
+    schoolsUtils.fetchAll().then(() => {
+      setIsLoading(false);
+    });
+
+    await paginatedBooksUtils.fetchAll();
+  }, [booksBySchoolUtils, paginatedBooksUtils, schoolsUtils]);
+
+  const loadBooksBySchool = useCallback(
+    async (schoolId) => {
+      paginatedBooksUtils.invalidateData();
+
+      await booksBySchoolUtils.fetchById(schoolId);
+    },
+    [paginatedBooksUtils, booksBySchoolUtils]
+  );
+
+  useEffect(() => {
+    if (schools === null && !schoolsUtils.loading) {
+      loadAllBooks();
+    }
+  }, [schoolsUtils.loading, schools, loadAllBooks]);
 
   return (
-<>
-<button onClick={handleBooks}>books w id</button>
-{/* <button onClick={()=>fetchWithCache("/api/books")}>books</button> */}
-{/* <button onClick={()=>fetchWithCache(`api/books/${5}`)}>books w id</button> */}
-{/* <button onClick={()=>fetchWithCache("api/schools")}>schools</button> */}
-</>
+  <>
+  {/* build the app!! */}
+  </>
   );
 }
 
