@@ -53,7 +53,6 @@ function App() {
           isLoading={isLoading}
           defaultValue={NO_SCHOOL}
           items={schools === null ? [] : [NO_SCHOOL, ...schools]}
-          label="Filter by School"
           loadingLabel="Loading Schools..."
           parseItem={(item) => ({
             value: item.id,

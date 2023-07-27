@@ -1,10 +1,10 @@
 import "./index.css";
 import { useCallback, useState } from "react";
-import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
+import { CustomAutocomplete } from "./autoCompleteStyling";
+
 
 function Dropdown({
-  label,
   defaultValue,
   onChange: userOnChange,
   items,
@@ -28,7 +28,7 @@ function Dropdown({
 
   return (
     <div className="dropdown-container">
-      <Autocomplete
+      <CustomAutocomplete
         value={selectedValue}
         onChange={onChange}
         options={items}
@@ -38,11 +38,10 @@ function Dropdown({
         renderInput={(params) => (
           <TextField
             {...params}
-            label={label}
             variant="outlined"
             InputProps={{
               ...params.InputProps,
-              style: { width: 200 },
+              style: { width: 250, height: 42 },
             }}
           />
         )}
