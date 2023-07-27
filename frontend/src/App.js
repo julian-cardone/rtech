@@ -44,9 +44,6 @@ function App() {
     }
   }, [schoolsUtils.loading, schools, loadAllBooks]);
 
-  const test = schools === null ? [] : [NO_SCHOOL, ...schools];
-  console.log(test);
-
   return (
     <>
       <div>
@@ -54,7 +51,7 @@ function App() {
 
         <Dropdown
           isLoading={isLoading}
-          defaultValue={NO_SCHOOL?.name}
+          defaultValue={NO_SCHOOL}
           items={schools === null ? [] : [NO_SCHOOL, ...schools]}
           label="Filter by School"
           loadingLabel="Loading Schools..."
@@ -69,6 +66,7 @@ function App() {
 
             if (newValue === NO_SCHOOL) {
               await loadAllBooks();
+              return;
             }
 
             await loadBooksBySchool(newValue.id);

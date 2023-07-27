@@ -15,7 +15,7 @@ function Dropdown({
   const [selectedValue, setSelectedValue] = useState(defaultValue ?? null);
 
   const onChange = useCallback(
-    (selectedItem) => {
+    (event, selectedItem) => {
       if (selectedItem === null) {
         return;
       }
@@ -26,14 +26,13 @@ function Dropdown({
     [userOnChange]
   );
 
-  console.log(selectedValue);
-
   return (
     <div className="dropdown-container">
       <Autocomplete
         value={selectedValue}
         onChange={onChange}
-        options={items.map((item) => parseItem(item).label)}
+        options={items}
+        getOptionLabel={(item) => parseItem(item).label}
         loading={isLoading}
         loadingText={loadingLabel}
         renderInput={(params) => (

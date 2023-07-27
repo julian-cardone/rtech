@@ -19,6 +19,7 @@ export const useCustomFetch = () => {
 
         const res = await rTechFetch(endpoint);
         const data = await res.json();
+        console.log(data)
         cache?.current.set(cacheKey, data.data);
         return data;
       }),
