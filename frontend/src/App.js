@@ -54,7 +54,7 @@ function App() {
       <Container
         style={{
           justifyContent: "center",
-          padding: "90px 16px",
+          padding: "58px 16px",
           maxWidth: "1410px",
           margin: "auto",
           backgroundImage: "linear-gradient(90deg, #D9DAEB, #EBE5E3)"
@@ -82,7 +82,7 @@ function App() {
             await loadBooksBySchool(newValue.id);
           }}
         />
-        <div style={{ marginTop: "36px", width: "100%" }}>
+        {/* <div style={{ marginTop: "36px", width: "100%" }}> */}
           <Books books={books} />
 
           {paginatedBooks?.nextPage && (
@@ -95,7 +95,7 @@ function App() {
               View More
             </button>
           )}
-        </div>
+        {/* </div> */}
       </Container>
     </>
   );

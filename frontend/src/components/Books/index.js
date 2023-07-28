@@ -17,7 +17,7 @@ function Books({ books }) {
 
   return (
     <>
-      <Grid container spacing={4}>
+      <Grid container spacing={4} style={{ paddingTop: "110px" }}>
         {books.map((book) => (
           <Grid
             item

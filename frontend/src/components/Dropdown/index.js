@@ -47,28 +47,31 @@ function Dropdown({
   );
 
   return (
-    <CustomAutocomplete
-      value={selectedValue}
-      open={open}
-      onOpen={() => setOpen(true)}
-      onClose={() => setOpen(false)}
-      onChange={onChange}
-      options={items}
-      getOptionLabel={(item) => parseItem(item).label}
-      loading={isLoading}
-      loadingText={loadingLabel}
-      renderInput={(params) => (
-        <TextField
-          ref={autocompleteRef}
-          {...params}
-          variant="outlined"
-          InputProps={{
-            ...params.InputProps,
-            style: { width: 250, height: 42 },
-          }}
-        />
-      )}
-    />
+    <div style={{ width: "100%", height: "110px", zIndex: "50", backgroundImage: "inherit", position: "fixed", display: "flex"}}>
+      <CustomAutocomplete
+        value={selectedValue}
+        open={open}
+        onOpen={() => setOpen(true)}
+        onClose={() => setOpen(false)}
+        onChange={onChange}
+        options={items}
+        getOptionLabel={(item) => parseItem(item).label}
+        loading={isLoading}
+        loadingText={loadingLabel}
+        style={{ display: "flex",  alignItems: "center"}}
+        renderInput={(params) => (
+          <TextField
+            ref={autocompleteRef}
+            {...params}
+            variant="outlined"
+            InputProps={{
+              ...params.InputProps,
+              style: { width: 250, height: 42 },
+            }}
+          />
+        )}
+      />
+    </div>
   );
 }
 
