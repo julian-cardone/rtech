@@ -11,7 +11,6 @@ function Dropdown({
   loadingLabel,
 }) {
   const [selectedValue, setSelectedValue] = useState(defaultValue ?? null);
-  console.log(selectedValue);
 
   const [open, setOpen] = useState(false);
   const autocompleteRef = useRef(null);

@@ -3,17 +3,28 @@ import image from "../../media/ctci.jpg";
 
 function Books({ books }) {
   if (books === null) {
-    return <div style={{fontSize: "175px", height: "2000px"}}> I am loading... </div>;
+    return (
+      <div style={{ fontSize: "175px", height: "2000px", paddingTop: "100px" }}>
+        {" "}
+        I am loading...{" "}
+      </div>
+    );
   }
 
   const typographyTwo = {
-      fontFamily: "Rubik, sans-serif",
-      fontWeight: "300",
-      fontSize: "12px",
-      color: "#646464", 
-      lineHeight: "1.57",
-      letterSpacing: "0.02em"
-  }
+    fontFamily: "Rubik, sans-serif",
+    fontWeight: "300",
+    fontSize: "12px",
+    color: "#646464",
+    lineHeight: "1.57",
+    letterSpacing: "0.02em",
+  };
+
+  const gridItemStyles = {
+    maxWidth: "275px",
+    minWidth: "250px",
+    cursor: "pointer",
+  };
 
   return (
     <>
@@ -27,7 +38,7 @@ function Books({ books }) {
             md={4}
             lg={3}
             xl={2}
-            style={{ maxWidth: "275px", minWidth: "250px" }}
+            style={gridItemStyles}
           >
             <Paper
               elevation={1}
@@ -44,7 +55,7 @@ function Books({ books }) {
                 <img
                   src={image}
                   alt={book.title}
-                  style={{ width: "100%", display: "block" }}
+                  style={{ width: "100%", height: "100%" }}
                 />
               </div>
               <Grid container direction="column" sx={{ padding: "16px" }}>
@@ -55,20 +66,28 @@ function Books({ books }) {
                       fontFamily: "Sofia-Pro, sans-serif",
                       fontWeight: "600",
                       fontSize: "15px",
-                      color: "#646464", 
+                      color: "#646464",
                       lineHeight: "1.2",
-                      letterSpacing: "-0.5px"
+                      letterSpacing: "-0.5px",
                     }}
                   >
                     {book.title}
                   </Typography>
                 </Grid>
-                <Grid container>
+                <Grid
+                  container
+                  style={{ display: "flex", justifyContent: "space-between" }}
+                >
                   <Grid item>
-                    <Typography variant="subtitle1" sx={typographyTwo}>{book.school.name}</Typography>
+                    <Typography variant="subtitle1" sx={typographyTwo}>
+                      {book.school.name}
+                    </Typography>
                   </Grid>
                   <Grid item>
-                    <Typography variant="subtitle2" sx={{...typographyTwo, marginLeft: "8px"}}>
+                    <Typography
+                      variant="subtitle2"
+                      sx={{ ...typographyTwo, marginLeft: "8px" }}
+                    >
                       ${book.price}.00
                     </Typography>
                   </Grid>

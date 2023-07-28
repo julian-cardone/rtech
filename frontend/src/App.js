@@ -14,7 +14,6 @@ function App() {
   const { data: schools, ...schoolsUtils } = useSchools();
   const { data: booksBySchool, ...booksBySchoolUtils } = useBooksFiltered();
   const [isLoading, setIsLoading] = useState(false);
-  console.log(booksBySchool)
 
   const books = useMemo(
     () => paginatedBooks?.data ?? booksBySchool?.data ?? null,
