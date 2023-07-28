@@ -29,6 +29,3 @@
 /config/master.key
 .byebug_history
 .DS_Store
-/config/credentials/production.key
-
-git rm -r --cached public

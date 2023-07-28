@@ -51,5 +51,3 @@ group :development do
   gem "binding_of_caller"
 end
 
-
-gem "dockerfile-rails", ">= 1.5", :group => :development

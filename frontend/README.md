@@ -54,4 +54,4 @@ The app has a navigation bar, autocomplete dropdown and a books display componen
 
 ### A note on paginated books
 
-Requests for paginated books will return an array of 50 books and a 'nextPage' property. The nextPage property will return null if there are no more books to be fetched, and the 'view more' button will then be hidden. See [here](./app/controllers/api/books_controller.rb) to see how the backend deals with this code. 
+Requests for paginated books will return an array of 50 books and a 'nextPage' property. The nextPage property will return null if there are no more books to be fetched, and the 'view more' button will then be hidden. See [here](../backend/app/controllers/api/books_controller.rb) to see how the backend deals with this code. 

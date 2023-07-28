@@ -84,8 +84,6 @@ GEM
     crass (1.0.6)
     date (3.3.3)
     debug_inspector (1.1.0)
-    dockerfile-rails (1.5.2)
-      rails
     erubi (1.12.0)
     faker (3.2.0)
       i18n (>= 1.8.11, < 2)
@@ -181,7 +179,6 @@ DEPENDENCIES
   binding_of_caller
   bootsnap
   byebug
-  dockerfile-rails (>= 1.5)
   faker
   jbuilder
   pg (~> 1.1)
