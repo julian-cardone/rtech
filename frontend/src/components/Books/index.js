@@ -3,7 +3,7 @@ import image from "../../media/ctci.jpg";
 
 function Books({ books }) {
   if (books === null) {
-    return <div> this is a loading div... </div>;
+    return <div style={{fontSize: "175px", height: "2000px"}}> I am loading... </div>;
   }
 
   const typographyTwo = {
@@ -32,13 +32,13 @@ function Books({ books }) {
             <Paper
               elevation={1}
               variant="outlined"
-              sx={{ borderRadius: "8px" }}
+              sx={{ borderRadius: "6px" }}
             >
               <div
                 style={{
                   height: "330px",
                   overflow: "hidden",
-                  borderRadius: "8px 8px 0 0",
+                  borderRadius: "6px 6px 0 0",
                 }}
               >
                 <img

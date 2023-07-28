@@ -22,11 +22,13 @@ function Navigation() {
   const CustomButton = styled(Button)({
     fontSize: '15px', 
     fontFamily: "'Roboto', sans-serif", 
-    letterSpacing: "1px",
+    letterSpacing: "1.5px",
     textTransform: "uppercase",
     textDecoration: "none !important",
-    // textShadow: "0px 0.1px 0px rgba(105, 105, 105, 0.7)",
-    // fontStretch: "semi-condensed"
+    textShadow: "0.3px 0.3px 0px rgba(105, 105, 105, 0.8)",
+    fontStretch: "semi-condensed",
+    padding: "0 0",
+    marginLeft: "7px"
   })
 
   return (
@@ -35,7 +37,7 @@ function Navigation() {
         <CustomToolbar>
           <Grid container justifyContent="space-between" alignItems="center">
             <Grid item>
-              <Grid container justifyContent="space-between">
+              <Grid container>
                 <Grid item>
                   <CustomButton color="inherit">Login</CustomButton>
                 </Grid>

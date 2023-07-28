@@ -34,8 +34,18 @@ export const CustomAutocomplete = styled(Autocomplete)({
   "& .MuiAutocomplete-clearIndicator": {
     display: "none", // Hide the clear icon
   },
-  "& label": {
-    // Add your label text styles here
-    color: "#808080",
+  '&& .css-nxo287-MuiInputBase-input-MuiOutlinedInput-input': {
+    color: '#808080',
+    fontSize: '16px',
+    fontFamily: 'Rubik, sans-serif',
+    position: "relative",
+    bottom: "6px",
   },
+  '& .MuiAutocomplete-popupIndicator': {
+    color: 'blue', // Replace with your desired arrow color
+    cursor: 'pointer', // Set the cursor to a pointer on hover
+  },
+  '&& .css-wb57ya-MuiFormControl-root-MuiTextField-root':{
+    width: "266px"
+  }
 });
