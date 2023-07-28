@@ -1,6 +1,16 @@
 import { Grid, Paper, Typography } from "@mui/material";
 import image from "../../media/ctci.jpg";
 
+/* 
+this is the display page for the books
+the grid maps out each book item
+
+--- a bit about material ui gridding ---
+The grid system is based on a 12-column layout, where you can divide the available width of the container into 12 equal parts. 
+You can then use the xs, sm, md, lg, and xl props to define how many columns a grid item should occupy at different screen sizes.
+The Grid component acts as a container that holds grid items. It uses a flexbox-based layout to arrange its child grid items horizontally.
+*/
+
 function Books({ books }) {
   if (books === null) {
     return (

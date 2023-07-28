@@ -1,9 +1,13 @@
 import { Grid } from "@mui/material";
-import { CustomAppBar, CustomButton, CustomToolbar } from "./customButton";
+import {
+  CustomAppBar,
+  CustomButton,
+  CustomToolbar,
+} from "../../materialUI/customButton";
+
+// nav bar. The custom components are in the materialUI folder
 
 function Navigation() {
-
-
   return (
     <>
       <CustomAppBar>

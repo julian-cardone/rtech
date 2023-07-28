@@ -1,6 +1,12 @@
 import { useCallback, useContext, useState } from "react";
 import { AppContext } from "../utils/context";
 
+/*
+useWrappedRequest... wraps the fetch request
+manages a loading state for the server fetch.
+a bit of error handling too
+*/
+
 export function useWrappedRequest() {
   const [loading, setLoading] = useState(false);
   const { setError } = useContext(AppContext);

@@ -2,6 +2,24 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import TextField from "@mui/material/TextField";
 import { CustomAutocomplete } from "./autoCompleteStyling";
 
+/*
+this is the dropdown component for the list of schools. 
+it contains an autocomplete component from material ui
+values seelcted will change trigger fetches for the corresponding endpoint
+
+Description of the props:
+defaultValue is the NO_SCHOOL object which represents the 'all schools' endpoint
+onChange is the function passed in to swtich endpoints
+items is the array of the books currently memoized 
+parseItem is the method to extract informatino from each book
+isLoading is the loading state for the schools in the dropdown (ie: cannot select school when they are being fetched) 
+
+A word about the menu open/close functionality:
+a reference to the menu textfield is created
+when a click event occurs, checks to see if the click is outside of the referenced area
+if so, it closes the menu
+*/
+
 function Dropdown({
   defaultValue,
   onChange: userOnChange,
@@ -46,7 +64,16 @@ function Dropdown({
   );
 
   return (
-    <div style={{ width: "100%", height: "110px", zIndex: "50", backgroundImage: "inherit", position: "fixed", display: "flex"}}>
+    <div
+      style={{
+        width: "100%",
+        height: "110px",
+        zIndex: "50",
+        backgroundImage: "inherit",
+        position: "fixed",
+        display: "flex",
+      }}
+    >
       <CustomAutocomplete
         value={selectedValue}
         open={open}
@@ -57,7 +84,7 @@ function Dropdown({
         getOptionLabel={(item) => parseItem(item).label}
         loading={isLoading}
         loadingText={loadingLabel}
-        style={{ display: "flex",  alignItems: "center"}}
+        style={{ display: "flex", alignItems: "center" }}
         renderInput={(params) => (
           <TextField
             ref={autocompleteRef}

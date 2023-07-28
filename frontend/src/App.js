@@ -7,7 +7,9 @@ import Dropdown from "./components/Dropdown";
 import { NO_SCHOOL } from "./utils/constants";
 import Books from "./components/Books";
 import { Container } from "@mui/material";
-import { CustomButton } from "./components/Navigation/customButton";
+import { CustomButton } from "./materialUI/customButton";
+
+// for an in-depth overview of app.js, refer to the README
 
 function App() {
   const { data: paginatedBooks, ...paginatedBooksUtils } = usePaginatedBooks();
@@ -57,7 +59,7 @@ function App() {
           padding: "58px 16px",
           maxWidth: "1410px",
           margin: "auto",
-          backgroundImage: "linear-gradient(90deg, #D9DAEB, #EBE5E3)"
+          backgroundImage: "linear-gradient(90deg, #D9DAEB, #EBE5E3)",
         }}
       >
         <Dropdown
@@ -82,21 +84,19 @@ function App() {
             await loadBooksBySchool(newValue.id);
           }}
         />
-        {/* <div style={{ marginTop: "36px", width: "100%" }}> */}
-          <Books books={books} />
+        <Books books={books} />
 
-          {paginatedBooks?.nextPage && (
-            <CustomButton
-              disabled={paginatedBooksUtils.loading}
-              onClick={async () => {
-                await loadAllBooks();
-              }}
-              style={{ top: "17px", color: "#696969",  }}
-            >
-              View More
-            </CustomButton>
-          )}
-        {/* </div> */}
+        {paginatedBooks?.nextPage && (
+          <CustomButton
+            disabled={paginatedBooksUtils.loading}
+            onClick={async () => {
+              await loadAllBooks();
+            }}
+            style={{ top: "17px", color: "#696969" }}
+          >
+            View More
+          </CustomButton>
+        )}
       </Container>
     </>
   );

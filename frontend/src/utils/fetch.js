@@ -1,4 +1,11 @@
-// custom rTechFetch statement
+// --- custom rTechFetch statement ---
+/*
+sets the method to get if not specified
+empty headers if not specified
+handles headers and body in the event it is not a get request
+note: this app only makes get requests
+throws an error if there is critical issue
+*/
 
 export async function rTechFetch(url, options = {}) {
   options.method = options.method || "GET";
