@@ -81,8 +81,5 @@ test:
 #
 production:
   <<: *default
-  database: rowantech_production
-  username: udvbfsyn
-  password: <%= ENV["ROWANTECH_DATABASE_PASSWORD"] %>
-  secret_key_base: <%= Rails.application.credentials[:secret_key_base] %>
+  url: <%= ENV['DATABASE_URL'] %>
 
