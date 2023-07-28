@@ -3,7 +3,7 @@ import { useCustomFetch } from "./useCustomFetch";
 
 /* 
 custom hook to manage paginated books
-fetches books from server or cache
+fetches books from server or cache. uses the params for a search query
 sets a state of the books fetched. will concatenate old state with new state in the event that a user clicks the 'view more' button
 invalidates state data when needed
 returns object data: state, loading, fetch, and invalidation function, loaded as usePaginatedBooksUtils() in the app

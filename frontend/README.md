@@ -1,70 +1,51 @@
-# Getting Started with Create React App
+# Welcome to my app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was created with:
+ - PostgreSQL
+ - Ruby on Rails
+ - JBuilder
+ - Node.js
+ - React
+ - Material UI
 
-## Available Scripts
+## A note on the app's ideation
 
-In the project directory, you can run:
+An app's scalabilty is arguably the most important feature of code design. As the business grows, the app's integrity will be tested
+with more requests that involve more data. 
+This app provides an example of a solution to handle the creation of more ebooks and more users.
 
-### `npm start`
+## Overview of the app's design
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+There are two main concepts that inspire the app's design:
+1. frontend data storage/management
+2. pagination
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Let's begin with the first idea:
+This app makes use of react context to provide a 'cache' to the entire application. This cache is responsible for two things.
+1. Storing data in a map data structure
+2. App errors
+Upon every request to the server, the cache is first checked for a key that matches the requested endpoint. If it is found, the
+data is returned from the cache instead of from the server. This prevents unnecessary requests to the server and makes the application 
+a bit faster (i.e., User does not have to wait for a server response).
 
-### `npm test`
+Now let's discuss pagination:
+When a request to fetch all books occurs, the server is set to only respond with 50 at a time. The user can then click the 'view more' button to
+load another 50, which is concatenated to the current books being displayed.
+Pagination will make the site more responsive when, for isntance, there are hundreds or thousands of books stored in the database.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## In-depth overview of app.js
+(This only covers app.js, for further documentation, see the individual files)
 
-### `npm run build`
+When app.js is first rendered, the custom hooks are loaded into the application, a loading state is created, and a useEffect is triggered. This triggers the loadAllBooks function, which does a few things:
+1. manages the loading state for the schools request. This is to prevent users from selected a school before they are justly loaded
+2. invalidates the filteredBooks state to clear the memoized books (more on this later)
+3. fetches the list of schools
+4. fetches the first 50 books
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The data (books) for the app is stored in a memoized constant called 'books.' Using the useMemo hook in react, 'books' updates everytime the pagintedBooks or booksBySchool state changes. For example, when the loadBooksBySchool function is called in the event of a user's school selection, it will call the usePaginatedBooks invalidate data function to set 
+the paginatedBooks state to null, which will trigger a change in the 'books' constant. The constant is set to whichever state is not null.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The app has navigation bar, autocomplete dropdown, and books display components built with Material UI. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### a note on paginated books
+Reqeusts for paginated books will return an array of 50 books, as well as a 'nextPage' property. The nextPage property will return null if there are no more books to be fetched, and the 'view more' button will then be hidden. See [here](../backend/app/controllers/api/books_controller.rb) to see how the backend deals with this code. 
