@@ -7,6 +7,7 @@ import Dropdown from "./components/Dropdown";
 import { NO_SCHOOL } from "./utils/constants";
 import Books from "./components/Books";
 import { Container } from "@mui/material";
+import { CustomButton } from "./components/Navigation/customButton";
 
 function App() {
   const { data: paginatedBooks, ...paginatedBooksUtils } = usePaginatedBooks();
@@ -86,14 +87,15 @@ function App() {
           <Books books={books} />
 
           {paginatedBooks?.nextPage && (
-            <button
+            <CustomButton
               disabled={paginatedBooksUtils.loading}
               onClick={async () => {
                 await loadAllBooks();
               }}
+              style={{ top: "17px", color: "#696969",  }}
             >
               View More
-            </button>
+            </CustomButton>
           )}
         {/* </div> */}
       </Container>
