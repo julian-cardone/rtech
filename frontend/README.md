@@ -26,6 +26,7 @@ Let's begin with the first idea:
 This app uses react context to provide a 'cache' to the entire application. This cache is responsible for two things.
 1. Storing data in a map data structure
 2. App errors
+
 Upon every request to the server, the cache is first checked for a key that matches the requested endpoint. If it is found, the
 data is returned from the cache instead of the server. This prevents unnecessary requests to the server and makes the application 
 a bit faster (i.e., The user does not have to wait for a server response).
