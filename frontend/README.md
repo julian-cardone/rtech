@@ -39,7 +39,7 @@ Pagination will make the site more responsive when, for instance, hundreds or th
 
 ## In-depth overview of app.js
 
-(This only covers app.js. for additional documentation, see the individual files)
+(This only covers app.js. For additional documentation, see the individual files.)
 
 When app.js is first rendered, the custom hooks are loaded into the application, a loading state is created, and a useEffect is triggered. This triggers the loadAllBooks function, which does a few things:
 1. manages the loading state for the schools request. This is to prevent users from selecting a school before they are justly loaded
