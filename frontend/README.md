@@ -43,7 +43,7 @@ Note: This only covers the code found in App.js. Additional documentation is fou
 
 When App.js is first rendered, the custom hooks are loaded into the application, a loading state is created, and a useEffect is triggered. This triggers the loadAllBooks function, which does a few things:
 1. Manages the loading state for the 'schools' request. This is to prevent users from selecting a school before they are justly loaded
-2. Invalidates the filteredBooks state to clear the memoized books (more on this later)
+2. Invalidates the booksBySchool state to clear the memoized books (more on this later)
 3. Fetches the list of schools
 4. Fetches the first 50 books
 
