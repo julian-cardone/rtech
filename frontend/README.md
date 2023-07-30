@@ -19,13 +19,14 @@ This app provides an example of a solution to handle the creation of more ebooks
 ## Overview of the app's design
 
 Two main concepts inspire the app's design:
-1. frontend data storage/management
-2. pagination
+1. Frontend data storage/management
+2. Pagination
 
 Let's begin with the first idea:
-This app uses react context to provide a 'cache' to the entire application. This cache is responsible for two things.
+This app uses react context to provide a 'cache' to the entire application. This cache is responsible for two things:
 1. Storing data in a map data structure
 2. App errors
+
 Upon every request to the server, the cache is first checked for a key that matches the requested endpoint. If it is found, the
 data is returned from the cache instead of the server. This prevents unnecessary requests to the server and makes the application 
 a bit faster (i.e., The user does not have to wait for a server response).
@@ -36,15 +37,15 @@ load another 50, which is concatenated to the current books being displayed.
 Pagination will make the site more responsive when, for instance, hundreds or thousands of books are stored in the database.
 
 
-## In-depth overview of app.js
+## In-depth overview of App.js
 
-(This only covers app.js, for further documentation, see the individual files)
+Note: This only covers the code found in App.js. Additional documentation is found in the individual files.
 
-When app.js is first rendered, the custom hooks are loaded into the application, a loading state is created, and a useEffect is triggered. This triggers the loadAllBooks function, which does a few things:
-1. manages the loading state for the schools request. This is to prevent users from selecting a school before they are justly loaded
-2. invalidates the filteredBooks state to clear the memoized books (more on this later)
-3. fetches the list of schools
-4. fetches the first 50 books
+When App.js is first rendered, the custom hooks are loaded into the application, a loading state is created, and a useEffect is triggered. This triggers the loadAllBooks function, which does a few things:
+1. Manages the loading state for the 'schools' request. This is to prevent users from selecting a school before they are justly loaded
+2. Invalidates the filteredBooks state to clear the memoized books (more on this later)
+3. Fetches the list of schools
+4. Fetches the first 50 books
 
 The data (books) for the app is stored in a memoized constant called 'books.' Using the useMemo hook in react, 'books' updates every time the pagintedBooks or booksBySchool state changes. For example, when the loadBooksBySchool function is called in the event of a user's school selection, it will call the usePaginatedBooks invalidateData function to set 
 the paginatedBooks state to null, which will trigger a change in the 'books' constant. The constant is set to whichever state is not null.
