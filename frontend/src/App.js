@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useSchools } from "./hooks/useSchools";
 import { usePaginatedBooks } from "./hooks/usePaginatedBooks";
-import { useBooksFiltered } from "./hooks/useBooksFiltered";
+import { useBooksBySchool } from "./hooks/useBooksBySchool";
 import Navigation from "./components/Navigation";
 import Dropdown from "./components/Dropdown";
 import { NO_SCHOOL } from "./utils/constants";
@@ -14,7 +14,7 @@ import { CustomButton } from "./materialUI/customButton";
 function App() {
   const { data: paginatedBooks, ...paginatedBooksUtils } = usePaginatedBooks();
   const { data: schools, ...schoolsUtils } = useSchools();
-  const { data: booksBySchool, ...booksBySchoolUtils } = useBooksFiltered();
+  const { data: booksBySchool, ...booksBySchoolUtils } = useBooksBySchool();
   const [isLoading, setIsLoading] = useState(false);
 
   const books = useMemo(

@@ -6,10 +6,10 @@ custom hook to manage filtered books
 fetches books from server or cache
 sets a state of the books fetched
 invalidates state data when needed
-returns object data: state, loading, fetch, and invalidation function, loaded as useBooksFilteredUtils() in the app
+returns object data: state, loading, fetch, and invalidation function, loaded as useBooksBySchoolUtils() in the app
 */
 
-export function useBooksFiltered() {
+export function useBooksBySchool() {
   const { fetchWithCache, loading } = useCustomFetch();
   const [booksBySchool, setBooksBySchools] = useState();
 
