@@ -7,7 +7,7 @@ import Dropdown from "./components/Dropdown";
 import { NO_SCHOOL } from "./utils/constants";
 import Books from "./components/Books";
 import { Container } from "@mui/material";
-import { CustomButton } from "./materialUI/customButton";
+import { CustomButton } from "./materialUI/customComps";
 
 // for an in-depth overview of app.js, refer to the README
 

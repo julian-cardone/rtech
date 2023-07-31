@@ -3,7 +3,7 @@ import {
   CustomAppBar,
   CustomButton,
   CustomToolbar,
-} from "../../materialUI/customButton";
+} from "../../materialUI/customComps";
 
 // nav bar. The custom components are in the materialUI folder
 

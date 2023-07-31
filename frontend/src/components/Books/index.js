@@ -11,6 +11,8 @@ You can then use the xs, sm, md, lg, and xl props to define how many columns a g
 The Grid component acts as a container that holds grid items. It uses a flexbox-based layout to arrange its child grid items horizontally.
 */
 
+// note: on line 56 and line 57, the variant="outline" property and the elevation={1} property does not work in tangent
+
 function Books({ books }) {
   if (books === null) {
     return (
